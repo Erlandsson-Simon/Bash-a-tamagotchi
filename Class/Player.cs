@@ -16,6 +16,9 @@ public class Player
             if (name != "" && name.All(char.IsLetter))
             {
                 name = value;
+            } else
+            {
+                Console.WriteLine("You can only use letters!");
             }
         }
     }

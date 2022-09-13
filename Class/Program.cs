@@ -8,6 +8,8 @@ static void Game()
     Player player = new Player();
     bool enemyLeft = false;
 
+    bool questioning;
+
     //procent
     int playerAttackChance = 50;
     int playerCriticalAttackChance = 10;
@@ -15,7 +17,6 @@ static void Game()
     Enemy orc = new Enemy();
     enemyLeft = true;
 
-    player.Name = "Knut";
     orc.Name = "Xull";
 
     while (player.hp > 0 && enemyLeft)
@@ -24,25 +25,30 @@ static void Game()
         Console.WriteLine("Welcome to Bash-a-Monster.");
 
         Console.WriteLine("Please write a name for your hero:");
-        string temp;
+        
+         player.Name = Console.ReadLine();
 
-        while (condition)
+        questioning = true;
+        while (questioning)
         {
             temp = Console.ReadLine();
 
-        switch (temp)
-        {
-            
-            default:
-            break;
+            switch (temp)
+            {
+                case "hit":
+                    orc.hp = Methods.PlayerAttack(player.damage, orc.hp);
+                    break;
+
+                case "":
+                    break;
+
+                default:
+                    break;
+            }
+
+
         }
 
-        if (temp == "hit")
-        {
-            orc.hp = Methods.PlayerAttack(player.damage, orc.hp);
-        }
-        }
-        
     }
 
     if (player.hp > 0)
